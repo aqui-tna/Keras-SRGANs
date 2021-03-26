@@ -1,0 +1,27 @@
+name: vuanhtu1993/Keras-SRGANs
+conda_env: conda_Keras-SRGANs.yaml
+entry_points:
+  main:
+    command: python train.py
+  step1_testing:
+    parameters:
+      input_hig_res:
+        type: str
+        default: ./data_hr/
+      input_low_res:
+        type: str
+        default: ./data_lr/
+      output_dir:
+        type: str
+        default: ./output/
+      model_dir:
+        type: str
+        default: ./model/gen_model3000.h5
+      number_of_images:
+        type: float
+        default: 25
+      test_type:
+        type: str
+        default: test_model
+    command: python test.py -ihr {input_hig_res} -ilr {input_low_res} -o {output_dir}
+      -m {model_dir} -n {number_of_images} -t {test_type}
