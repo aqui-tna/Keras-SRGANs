@@ -1,0 +1,183 @@
+{
+    "name": "Baidi96/text2sql",
+    "url": "https://github.com/aqui-tna/text2sql",
+    "python_version": "3",
+    "requirements": {
+      "req_file": "requirements.txt",
+      "pip": [
+        "keras", "tensorflow", "scikit-image"
+      ],
+      "others": [
+      ]
+    },
+    "to_run": {
+        "decision": false,
+        "reason": "The project uses deprecated functions and libraries Ex: imresize from scipy.misc"
+    },
+    "entries": [
+        {
+          "cmd": "python train.py",
+          "main": "train.py",
+          "steps": [
+              "train"
+          ],
+          "args_lib": null,
+          "args": [],
+          "ins": [
+              {
+                "type": "dir",
+                "location": "./VN_dataset/",
+                "artifact": "dataset",
+                "ex_in_repo": true
+              }
+          ],
+          "outs": [
+              {
+                  "type": "dir",
+                  "location": "./output/",
+                  "artifact": "dataset",
+                  "ex_in_repo": true
+              },
+              {
+                "type": "dir",
+                "location": "./model/",
+                "artifact": "model",
+                "ex_in_repo": true
+              }
+          ]
+          },
+          {
+            "cmd": "python test.py",
+            "main": "test.py",
+            "steps": [
+                "testing"
+            ],
+            "args_lib": "argparse",
+            "args": [
+                {
+                    "names": [
+                        "-ihr",
+                        "--input_hig_res"
+                    ],
+                    "input": true,
+                    "dest": "input_hig_res",
+                    "ex_has_default": true,
+                    "default": "./data_hr/",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "-ilr",
+                        "--input_low_res"
+                    ],
+                    "input": true,
+                    "dest": "input_low_res",
+                    "ex_has_default": true,
+                    "default": "./data_lr/",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "-o",
+                        "--output_dir"
+                    ],
+                    "input": true,
+                    "dest": "output_dir",
+                    "ex_has_default": true,
+                    "default": "./output/",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "-m",
+                        "--model_dir"
+                    ],
+                    "input": true,
+                    "dest": "model_dir",
+                    "ex_has_default": true,
+                    "default": "./model/gen_model3000.h5",
+                    "type": "str",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "-n",
+                        "--number_of_images"
+                    ],
+                    "input": true,
+                    "dest": "number_of_images",
+                    "ex_has_default": true,
+                    "default": 25,
+                    "type": "float",
+                    "mandatory": false
+                },
+                {
+                    "names": [
+                        "-t",
+                        "--test_type"
+                    ],
+                    "input": true,
+                    "dest": "test_type",
+                    "ex_has_default": true,
+                    "default": "test_model",
+                    "type": "str",
+                    "mandatory": false
+                }
+            ],
+            "ins": [
+                {
+                  "type": "dir",
+                  "location": "./data_hr/",
+                  "artifact": "dataset",
+                  "ex_in_repo": true
+                },
+                {
+                    "type": "dir",
+                    "location": "./data_lr/",
+                    "artifact": "dataset",
+                    "ex_in_repo": true
+                }
+            ],
+            "outs": [
+                {
+                    "type": "dir",
+                    "location": "./output/",
+                    "artifact": "dataset",
+                    "ex_in_repo": true
+                },
+                {
+                  "type": "file",
+                  "location": "./model/gen_model3000.h5",
+                  "artifact": "model",
+                  "ex_in_repo": true
+                }
+            ]
+            }
+      ],
+    "ex_metrics": {
+      "metrics_files": [
+          {
+              "name": "losses_100_200.txt",
+              "in_repo": true,
+              "metrics": ["gan_loss", "discriminator_loss"]
+          }
+      ],
+      "prints": ["vg loss", "batch count", "shape", "discriminator_loss", "gan_loss"],
+      "plots": [],
+      "others": [
+      ]
+    },
+    "ex_hyperparams": {
+      "from_cmd": ["number_of_images"],
+      "config_files": [
+      ],
+      "in_code": [
+        "batch_size", "epochs", "number_of_images", "train_test_ratio"
+      ],
+      "others": [
+      ]
+    }
+  }
