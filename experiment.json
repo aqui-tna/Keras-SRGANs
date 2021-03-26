@@ -1,7 +1,7 @@
 {
-    "name": "Baidi96/text2sql",
-    "url": "https://github.com/aqui-tna/text2sql",
-    "python_version": "3",
+    "name": "vuanhtu1993/Keras-SRGANs",
+    "url": "https://github.com/aqui-tna/Keras-SRGANs",
+    "python_version": "3.5.4",
     "requirements": {
       "req_file": "requirements.txt",
       "pip": [
