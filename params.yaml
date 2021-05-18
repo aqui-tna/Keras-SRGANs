@@ -1,0 +1,7 @@
+step1_testing:
+  input_hig_res: ./data_hr/
+  input_low_res: ./data_lr/
+  output_dir: ./output/
+  model_dir: ./model/gen_model3000.h5
+  number_of_images: 25
+  test_type: test_model
