@@ -1,0 +1,19 @@
+stages:
+  step0_train:
+    cmd: python train.py
+    deps:
+    - train.py
+    - ./VN_dataset/
+  step1_testing:
+    cmd: python test.py
+    params:
+    - input_hig_res
+    - input_low_res
+    - output_dir
+    - model_dir
+    - number_of_images
+    - test_type
+    deps:
+    - test.py
+    - ./data_hr/
+    - ./data_lr/
